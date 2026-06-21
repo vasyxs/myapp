@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card" style="max-width: 500px; margin: 0 auto;">
+        <h2>Регистрация</h2>
+        <form method="POST">
+            <label>Имя пользователя</label>
+            <input type="text" name="username" required>
+            
+            <label>Почта</label>
+            <input type="email" name="email" required>
+            
+            <label>Пароль</label>
+            <input type="password" name="password" required>
+            
+            <label>Повторите пароль</label>
+            <input type="password" name="confirm_password" required>
+            
+            <button type="submit" class="btn">Зарегистрироваться</button>
+        </form>
+        <div class="links">
+            <a href="{{ url_for('login') }}">Уже есть аккаунт?</a>
+        </div>
+    </div>
+{% endblock %}

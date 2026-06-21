@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Профиль: {{ user.username }}</h1>
+    <p>📧 {{ user.email }}</p>
+    
+    <h2>Мои отзывы</h2>
+    
+    {% if reviews %}
+        {% for r in reviews %}
+            <div class="card">
+                <h3>{{ r.movie }}</h3>
+                <div class="meta">
+                    <span class="rating">⭐ {{ r.rating }}/10</span>
+                    <span>📅 {{ r.date.strftime('%d.%m.%Y') }}</span>
+                </div>
+                <p>{{ r.text }}</p>
+                <a href="{{ url_for('delete_review', id=r.id) }}" class="btn btn-danger" onclick="return confirm('Точно удалить?')">Удалить</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty">У вас пока нет отзывов</div>
+    {% endif %}
+{% endblock %}

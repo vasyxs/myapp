@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Все отзывы</h1>
+    
+    {% if reviews %}
+        {% for r in reviews %}
+            <div class="card">
+                <h2>{{ r.movie }}</h2>
+                <div class="meta">
+                    <span class="rating">⭐ {{ r.rating }}/10</span>
+                    <span>👤 {{ r.user.username }}</span>
+                    <span>📅 {{ r.date.strftime('%d.%m.%Y') }}</span>
+                </div>
+                <p>{{ r.text }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty">Пока нет отзывов :(</div>
+    {% endif %}
+{% endblock %}
